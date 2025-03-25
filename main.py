@@ -1,22 +1,27 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
 
-
+# Setting Up Screen 
 screen = Screen()
 screen.setup(width=800 ,height=800)
 screen.bgcolor('black')
+screen.listen()
 screen.tracer(0)
 
-left_paddle = Paddle()
-right_paddle = Paddle()
 
-screen.listen()
-screen.onkey(key='w' , fun=left_paddle.move_up)
+# Creating paddles
+paddle = Paddle()
 
+# Defining OnKey methods
+screen.onkey(key="Up" , fun=paddle.move_up)
+screen.onkey(key="Down" , fun=paddle.move_down)
 
 while True:
+# Updating the screen
     screen.update()
-# left_paddle.goto(0 , 350)
+
+
+
 
 
 screen.exitonclick()
