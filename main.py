@@ -27,13 +27,11 @@ screen.onkey(key="s" , fun=left_paddle.move_down)
 screen.onkey(key="Up" , fun=right_paddle.move_up)
 screen.onkey(key="Down" , fun=right_paddle.move_down)
 
-
 while True:
 # Updating the screen
     screen.update()
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     ball.move_ball()
-
     # Detecting collision with walls
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce()
@@ -42,9 +40,12 @@ while True:
     if ball.xcor() > 400 or ball.xcor() < -400:
         score.update_score(ball.xcor())
         ball.reset()
+        # score.display()
 
     # Detecting collision with paddles
     if ball.distance(right_paddle) < 50 and ball.xcor() > 340 or ball.distance(left_paddle) < 50 and ball.xcor() < -340:
         ball.bounce_x()
+
     
+
 screen.exitonclick()
